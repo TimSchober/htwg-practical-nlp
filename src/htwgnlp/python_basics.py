@@ -220,12 +220,3 @@ def read_dict_from_json_file(filename: str) -> dict:
     """
     f = open(filename, 'r')
     return json.load(f)
-
-
-if __name__ == '__main__':
-    data = {
-        "name": "Alice",
-        "age": 30,
-        "city": "New York"
-    }
-    print(write_dict_to_json_file(data, "../../tests/htwgnlp/files/test_data.json"))
