@@ -20,8 +20,8 @@ class WordEmbeddings:
     This class implements a Word Embeddings model for NLP tasks.
 
     Attributes:
-        embeddings (dict[str, np.ndarray]): the word embeddings. `None` if the embeddings have not been loaded yet.
-        embeddings_df (pd.DataFrame): the word embeddings as a DataFrame, where the index is the vocabulary and the columns are the embedding dimensions. `None` if the embeddings have not been loaded yet.
+        _embeddings (dict[str, np.ndarray]): the word embeddings. `None` if the embeddings have not been loaded yet.
+        _embeddings_df (pd.DataFrame): the word embeddings as a DataFrame, where the index is the vocabulary and the columns are the embedding dimensions. `None` if the embeddings have not been loaded yet.
     """
 
     def __init__(self) -> None:
