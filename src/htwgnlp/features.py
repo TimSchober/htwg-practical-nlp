@@ -28,8 +28,7 @@ class CountVectorizer:
         This means that if a key is not found in the dictionary, the value is 0 and no KeyError exception is raised.
 
         """
-        # TODO ASSIGNMENT-2: implement this method
-        raise NotImplementedError("This method needs to be implemented.")
+        self.word_frequencies = defaultdict(int)
 
     def build_word_frequencies(
         self, tweets: list[list[str]], labels: npt.NDArray[np.int_]
@@ -51,8 +50,9 @@ class CountVectorizer:
             tweets (list[list[str]]): a list of tokenized tweets
             labels (npt.NDArray[np.int_]): a column vector of corresponding class labels , e.g. `np.array([[1], [0], [1], [0]]`)
         """
-        # TODO ASSIGNMENT-2: implement this method
-        raise NotImplementedError("This method needs to be implemented.")
+        for tweet, label in zip(tweets, labels.flatten()):
+            for word in tweet:
+                self.word_frequencies[(word, label)] += 1
 
     def get_features(self, tweet: list[str]) -> np.ndarray:
         """Returns a feature vector for a given tweet.
@@ -65,6 +65,8 @@ class CountVectorizer:
         Returns:
             np.ndarray: the feature vector for the tweet as a row vector
         """
-
-        # TODO ASSIGNMENT-2: implement this method
-        raise NotImplementedError("This method needs to be implemented.")
+        pos, neg = 0, 0
+        for word in tweet:
+            pos += self.word_frequencies.get((word, 1), 0)
+            neg += self.word_frequencies.get((word, 0), 0)
+        return np.array([1, pos, neg])
